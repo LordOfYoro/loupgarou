@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+   	
+   <style>
+     
+    </style>
+	<link rel="stylesheet" type="text/css" href="static/css/foundation.css">
+	<link rel="stylesheet" type="text/css" href="static/css/styles.css">
+	
+  </head>
+  <body>
+	<div class="chatUser">
+		<ul id="messages" class="small-8 columns">
+			<h1>Chatbox</h1>
+		<!--Message générer par l'utilisateur-->
+		</ul>
+		<ul id="users" class="small-4 columns">
+			<h1> Utilisateur</h1>
+		
+		
+		
+		</ul>
+	</div>
+    <form action="">
+      <select class="small-2 marginNull columns">
+		<option value="valeur1">Loup garou</option>
+		<option value="valeur2">Villageois</option>		
+	  </select>
+	  <input id="m" class=" columns marginNull small-8" autocomplete="off" /><button class="marginNull columns small-2 button ">Send</button>
+    </form>
+	
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+	<script>
+	  $(function () {
+		var socket = io();
+		$('form').submit(function(){
+		  socket.emit('chat message', $('#m').val());
+		  $('#m').val('');
+		  return false;
+		});
+		socket.on('chat message', function(msg){
+		  $('#messages').append($('<li>').text(msg));
+		});
+	  });
+	</script>
+    
+  </body>
+</html>
