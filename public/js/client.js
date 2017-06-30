@@ -14,7 +14,6 @@
 		  
 		  socket.emit('message', 'Salut serveur, ça va ?');
 		});
-		
-		
+
 		
 	  });
