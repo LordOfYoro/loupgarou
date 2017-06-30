@@ -3,16 +3,14 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
+var publicDir = "public"
 
-
-app.use('/static', express.static(path.resolve(__dirname + "/..")));
+app.use('/static', express.static(path.join(__dirname + publicDir)));
 
 app.get('/', function(req, res){
-
 	
-  res.sendFile(path.resolve(__dirname + "/../index.html"));
-  
-  
+	var myPath = path.resolve(__dirname + "/public/index.html")
+	res.sendFile(myPath);
 });
 
 
