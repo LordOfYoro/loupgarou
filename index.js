@@ -3,7 +3,7 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
-var publicDir = "public"
+var publicDir = "/public"
 
 app.use('/static', express.static(path.join(__dirname + publicDir)));
 
