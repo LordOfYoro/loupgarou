@@ -13,8 +13,5 @@
 		  $('#messages').append($('<li>').text(msg));
 		  
 		  socket.emit('message', 'Salut serveur, ça va ?');
-		});
-		
-		
-		
+		});		
 	  });
