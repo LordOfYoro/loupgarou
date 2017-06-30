@@ -1,0 +1,30 @@
+html{min-height:100%;width:100%;margin:0; height:100%}
+body{min-height:100%;min-width:700px;width:100%;margin:0;height:100%}
+[type=text]{text-indent:10px;}
+ul{margin:0;}
+h1{text-align:center;}
+/*-----------------classe utile--------------------------*/
+.textCenter{text-align:center;}
+.clearfix::after{clear:both;content:' '; display:block;float:none}
+.clearfix::before{clear:both;content:' '; display:block;float:none}
+.marginNull{margin:0;}
+
+
+
+
+
+
+/* Mise en forme du form */
+form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+
+/* Mise en forme des messages */
+#messages { list-style-type: none; margin: 0; padding: 0;background-color:#E6E2AF; }
+#messages li { padding: 5px 10px; }
+#messages li:nth-child(odd) { background: #eee; }
+#messages li:nth-child(even){background:#EFECCA;}
+#users{background-color:#A7A37E;}
+
+.chatUser{height:100%;}
+#messages, #users{height:100%}
+
+#m{height:39px;}
