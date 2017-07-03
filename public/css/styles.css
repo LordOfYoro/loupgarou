@@ -1,7 +1,7 @@
 html{min-height:100%;width:100%;margin:0; height:100%}
 body{min-height:100%;min-width:700px;width:100%;margin:0;height:100%;background-color: #A7A37E;}
 [type=text]{text-indent:10px;}
-ul{margin:0;}
+ul{margin:0; list-style-type: none;}
 li{word-wrap: break-word;}
 h1{text-align:center;}
 /*-----------------classe utile--------------------------*/
@@ -10,16 +10,21 @@ h1{text-align:center;}
 .clearfix::before{clear:both;content:' '; display:block;float:none}
 .marginNull{margin:0;}
 
+/*	Attribution des couleurs  selon chat	*/
+
+.LoupGarou{color: red;}
+.Villageois{color: green;}
+
 
 /* Mise en forme des messages */
-#messages { list-style-type: none; margin: 0; padding: 0;background-color:#E6E2AF; }
-#messages li { padding: 5px 10px; }
-#messages li:nth-child(odd) { background: #eee; }
-#messages li:nth-child(even){background:#EFECCA;}
+#messages {  margin: 0; padding: 0;background-color:#E6E2AF; }
+#messages li ,#users li { padding: 5px 10px; }
+#messages li:nth-child(odd),#users li:nth-child(odd) { background: #eee; }
+#messages li:nth-child(even),#users li:nth-child(even){background:#EFECCA;}
 #users{background-color:#A7A37E;}
 .chatUser{height:95.6%; margin-bottom: 43px;}
 
-#messages, #users{min-height:100%; margin-bottom: 43px;}
+#messages, #users{height:100%; margin-bottom: 43px; overflow: auto}
 
 #m{height:39px;}
 

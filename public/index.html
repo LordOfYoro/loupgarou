@@ -12,21 +12,30 @@
   </head>
   <body>
 	<div class="chatUser clearfix">
-		<ul id="messages" class="small-8 columns">
-			<h1>Chatbox</h1>
-		<!--Message générer par l'utilisateur-->
-		</ul>
-		<ul id="users" class="small-4 columns">
+		
+		<div id="messages" class="small-8 columns">
+			<ul id="listMessages">
+				<h1>Chatbox</h1>
+			<!--Message générer par l'utilisateur-->
+			</ul>
+		</div>
+		
+		<div id="users" class="small-4 columns">
 			<h1> Utilisateur</h1>
-		
-		
-		
-		</ul>
+			<ul id="listUsers">
+				
+				
+			
+			
+			
+			</ul>
+		</div>
 	</div>
     <form action="">
       <select id="channel" class="small-2 marginNull columns">
+		<option value="valeur1">Spectateur</option>	
 		<option value="valeur2">Villageois</option>	
-		<option value="valeur1">Loup garou</option>
+		<option value="valeur3">LoupGarou</option>
 	  </select>
 	  <input id="m" class=" columns marginNull small-8" autocomplete="off" /><button class="marginNull columns small-2 button ">Send</button>
     </form>
