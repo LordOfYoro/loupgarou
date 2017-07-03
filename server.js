@@ -14,17 +14,21 @@ app.get('/', function(req, res){
 });
 
 
-io.on('connection', function(socket, pseudo){
+io.on('connection', function(socket, pseudo, channel){
 	
 	io.emit('some event', { for: 'everyone' });
-		socket.on('chat message', function(msg){
-		io.emit('chat message', socket.pseudo+ " : " + msg);
+	socket.on('chat message', function(msg){
+		io.emit('chat message',"[" + socket.channel + "] " + socket.pseudo + " : " + msg);
 	});
   
     // Dès qu'on nous donne un pseudo, on le stocke en variable de session
     socket.on('petit_nouveau', function(pseudo) {
         socket.pseudo = pseudo;
     });  
+	
+    socket.on('channel', function(channel) {
+        socket.channel = channel;
+    }); 
 });
     
 
