@@ -5,7 +5,6 @@ var io = require('socket.io')(http);
 var path = require('path');
 var publicDir = "/public";
 var users = [];
-var usersIndex;
 
 app.use('/static', express.static(path.join(__dirname + publicDir)));
 
@@ -26,7 +25,6 @@ io.on('connection', function(socket, pseudo, channel){
 	
 	io.emit('some event', { for: 'everyone' });
 	socket.on('chat message', function(msg){
-				
 		io.emit('chat message',socket.pseudo + " : " + msg);
 	});
   
@@ -34,17 +32,9 @@ io.on('connection', function(socket, pseudo, channel){
     socket.on('petit_nouveau', function(pseudo) {
         socket.pseudo = pseudo;	
 		
-		
 		var utilisateur = new Users(socket.id, socket.pseudo);
 		users.push(utilisateur);
 		io.emit('users', users);
-		
-		// recuperation index dans le tableau de l'utilisateur actuel
-		
-		usersIndex = users.indexOf(users[users.length -1]);		
-		
-		
-
     });  
 	
 	socket.on('utilisateur', function(pseudo) {
@@ -56,9 +46,34 @@ io.on('connection', function(socket, pseudo, channel){
     });
 	
 	socket.on('disconnect', function(){
+		function listerToutesLesPropriétés(o){
+			  var objectToInspect;
+			  var result = [];
+  
+			  for(objectToInspect = o; objectToInspect !== null; objectToInspect = Object.getPrototypeOf(objectToInspect)){  
+				result = result.concat(Object.getOwnPropertyNames(objectToInspect));  
+			  }
+			  return result; 
+			}
 		
-		// delete du bon utilisateur
-		users.splice(usersIndex, 1);
+
+		
+		
+		// recuperation index dans le tableau de l'utilisateur actuel
+		var usersIndex;
+		var userToDelete = new Users(socket.id, socket.pseudo);
+		
+		
+		
+		for(var i=0; i < users.length -1; i++){
+			if(users[i].id == socket.id ){
+				console.log("On est passé");
+				users.splice(i, 1) ;
+			}else{
+				console.log("On ne passe pas");
+			}
+		}
+		
 				
 		io.emit('users', users);
 	});
