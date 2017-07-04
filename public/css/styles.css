@@ -33,8 +33,7 @@ form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; 
 
 
 @media (orientation: landscape) {
-
 	form{
-		bottom: 22px;
+		height: 47px;
 	}
 }
