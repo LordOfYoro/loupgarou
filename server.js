@@ -46,38 +46,17 @@ io.on('connection', function(socket, pseudo, channel){
     });
 	
 	socket.on('disconnect', function(){
-		function listerToutesLesPropriétés(o){
-			  var objectToInspect;
-			  var result = [];
-  
-			  for(objectToInspect = o; objectToInspect !== null; objectToInspect = Object.getPrototypeOf(objectToInspect)){  
-				result = result.concat(Object.getOwnPropertyNames(objectToInspect));  
-			  }
-			  return result; 
-			}
-		
-
-		
-		
 		// recuperation index dans le tableau de l'utilisateur actuel
 		var usersIndex;
-		var userToDelete = new Users(socket.id, socket.pseudo);
-		
 		
 		
 		for(var i=0; i < users.length -1; i++){
 			if(users[i].id == socket.id ){
-				console.log("On est passé");
 				users.splice(i, 1) ;
-			}else{
-				console.log("On ne passe pas");
 			}
-		}
-		
-				
+		}		
 		io.emit('users', users);
 	});
-	
 });
     
 

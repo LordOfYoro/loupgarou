@@ -27,7 +27,6 @@
 		
 		});
 		
-
 		socket.on('chat message', function(msg){
 			var liCreate ;
 			liCreate = $('<li>') ;
@@ -35,10 +34,5 @@
 			liCreate.prepend('<span class="'+ channel +'"> ['+  channel +'] </span>');
 			
 		  $('#listMessages').append(liCreate);
-			 socket.emit('message', 'Salut serveur, ça va ?');
-
 		});
-		
-		
-
 	  });
