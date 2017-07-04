@@ -34,5 +34,8 @@
 			liCreate.prepend('<span class="'+ channelParam +'"> ['+  channelParam +'] </span>');
 			
 		  $('#listMessages').append(liCreate);
+		  $('#messages').scrollTop($('#listMessages')[0].scrollHeight);
 		});
+		
+		
 	  });
