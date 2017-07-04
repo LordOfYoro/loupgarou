@@ -21,7 +21,7 @@
 			
 			for(var i=0; i < nbUsers; i++){
 				liCreate = $('<li>') ;
-				liCreate.text(users[i]);
+				liCreate.text(users[i].pseudo);
 				$('#listUsers').append(liCreate);
 			}
 		
