@@ -28,6 +28,9 @@ io.on('connection', function(socket, pseudo, channel){
 	socket.on('chat message', function(msg, channelParam){
 		io.emit('chat message',socket.pseudo + " : " + msg, socket.channel);
 	});
+ 
+  
+  
   
     // Dès qu'on nous donne un pseudo, on le stocke en variable de session
     socket.on('petit_nouveau', function(pseudo) {
