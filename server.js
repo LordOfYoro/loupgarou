@@ -4,6 +4,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var path = require('path');
 var publicDir = "/public";
+
 var users = [];
 
 // Ajout des css et javascript ect .. 
@@ -21,6 +22,7 @@ io.on('connection', function(socket, pseudo, channel){
 	function Users(id, pseudo){
 		this.id = id ;
 		this.pseudo = pseudo;
+		this.ready = false;
 	}
 	
 	// Message envoyé pour chat
@@ -29,8 +31,6 @@ io.on('connection', function(socket, pseudo, channel){
 		io.emit('chat message',socket.pseudo + " : " + msg, socket.channel);
 	});
  
-  
-  
   
     // Dès qu'on nous donne un pseudo, on le stocke en variable de session
     socket.on('petit_nouveau', function(pseudo) {
@@ -61,6 +61,38 @@ io.on('connection', function(socket, pseudo, channel){
 		
 		io.emit('users', users);
 	});
+	
+	
+	socket.on('ready', function(ready, clicLocal){	
+		
+		
+		var nbJoueurs = 0;
+		
+		for(var i=0; i < users.length; i++){
+			if(users[i].id == socket.id ){
+				users[i].ready = ready ;
+			}
+		}	
+		for(var i=0; i < users.length; i++){
+			if(users[i].ready == true){
+				nbJoueurs++;
+			}
+		}	
+		if(nbJoueurs >= 3){
+			io.emit('ready2', clicLocal);
+		}else{
+			io.emit('notReady2');
+		}
+	});
+	
+	socket.on('notReady', function(notReady){	
+		for(var i=0; i < users.length; i++){
+			if(users[i].id == socket.id ){
+				users[i].ready = notReady ;
+			}
+		}
+	});
+	
 });
     
 
